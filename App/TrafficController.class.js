@@ -4,22 +4,28 @@ import { TrafficModel as Subject } from "./TrafficModel.class.js";
 
 export class TrafficController extends Subject {
 
+    clientspreviousState = false
+    bulbs = []
     constructor(props) {
         super(props);
-        TrafficController.updateAllClients()
+        this.updateAllClients()
     }
 
 
-    static updateAllClients(){
-        let bulb1 = document.getElementById('light1')
-        let bulb2 = document.getElementById('light2')
-        let bulb3 = document.getElementById('light3')
-        setInterval(() => {
-            bulb1.classList.add('light')
-            bulb2.classList.add('light')
-            bulb3.classList.add('light')
-
-        }, 100);
+     updateAllClients() {
+        setTimeout(() => {
+            let bulb = document.getElementsByClassName('bi-lightbulb')
+            for (const items in bulb) {
+                bulb[items].classList.add("text-success")
+                this.bulbs.push(bulb[items])
+                this.clientspreviousState = false
+            }
+            this.clientspreviousState = false
+        }, 1000);
+        if (!this.clientspreviousState){
+            this.bulbs.map(item =>item.classList.remove("text-success"))
+        }
+        // this.updateAllClients()
     }
 
     getElem = (id) => document.getElementById(id)
