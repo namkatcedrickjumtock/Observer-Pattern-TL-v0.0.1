@@ -3,35 +3,59 @@ import { TrafficModel as Subject } from "./TrafficModel.class.js";
 
 
 export class TrafficController extends Subject {
+    // controller variables
+    clientsBulbs = []
 
-    clientspreviousState = false
-    bulbs = []
     constructor(props) {
         super(props);
         this.updateAllClients()
     }
 
+    getClients = () => [...document.getElementsByClassName('bi-lightbulb')].filter(item =>
+        this.clientsBulbs.push(item))
 
-     updateAllClients() {
+
+    updateAllClients() {
+        this.getClients()
         setTimeout(() => {
-            let bulb = document.getElementsByClassName('bi-lightbulb')
-            for (const items in bulb) {
-                bulb[items].classList.add("text-success")
-                this.bulbs.push(bulb[items])
-                this.clientspreviousState = false
+            if (this.hasStateChange == 1) {
+                document.getElementById('state').innerHTML = this.hasStateChange
+                this.clientsBulbs.map(elems => elems).filter(items => items.style.color = "red")
+                document.getElementById('chip').style.color = "rgb(11, 192, 72)"
+                let newState = this.hasStateChange = 0
+                newState
+            } else {
+                document.getElementById('state').innerHTML = this.hasStateChange
+                this.clientsBulbs.map(elems => elems).filter(items => items.style.color = "black")
+                document.getElementById('chip').style.color = "black"
+                this.hasStateChange = 1
             }
-            this.clientspreviousState = false
+            this.updateAllClients()
         }, 1000);
-        if (!this.clientspreviousState){
-            this.bulbs.map(item =>item.classList.remove("text-success"))
-        }
-        // this.updateAllClients()
+
     }
 
-    getElem = (id) => document.getElementById(id)
-
-
-
+    changeTimeInterval(ineterval) {
+        this.updateAllClients(ineterval)
+    }
+    stopSimulation = () => { this.hasStateChange = 0 }
 }
 
-let TrafficObject = new TrafficController()
+window.onload = (event) => {
+    let TrafficObject = new TrafficController()
+    // let elem = document.getElementById('form')
+    let stop = document.getElementById('stop')
+
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let elem = document.getElementById('input').value
+        TrafficObject.changeTimeInterval(elem)
+        document.getElementById('input').value = ""
+
+    })
+    stop.addEventListener('click', TrafficObject.stopSimulation)
+}
+
+
+

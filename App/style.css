@@ -13,6 +13,7 @@ body .container {
 
 body .container .col-sm {
     padding: 0px;
+    /* background-color: rgb(11, 192, 72); */
 }
 
 
@@ -24,9 +25,17 @@ body .container .col-sm {
     position: relative;
 }
 
-b {}
+#state{
+font-family: 'Kdam Thmor Pro', sans-serif;
+font-weight: 800;
+font-size: 2em;
+/* background-color: #130c0c; */
+width: fit-content;
+position: relative;
+color: #000;
+margin: -4.7em auto;
+}
 
 /* font-family: 'Exo 2', sans-serif;
-font-family: 'Kdam Thmor Pro', sans-serif;
 font-family: 'Montserrat', sans-serif;
-font-family: 'Plus Jakarta Sans', sans-serif; */
+font-family: 'Plus Jakarta Sans', sans-serf

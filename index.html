@@ -27,16 +27,20 @@
                 <embed type="image/svg+xml" src="Assets/Tlight.svg" />
             </svg>
         </a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2 border-none" type="search" placeholder="Time shift" aria-label="Search">
-            <button class="btn btn-outline-success my-sm-0" type="submit">Set Time</button>
+        <form class="form-inline" id="form">
+            <input class="form-control mr-sm-2 border-none" type="search" placeholder="Time shift in mms"
+                aria-label="Search" id="input" required>
+            <button class="btn my-2 btn-outline-success my-sm-0" type="submit">Set Time</button>
+            <!-- <button class="btn my-2 btn-outline-success mx-2 my-sm-0" id="stop">Stop</button> -->
+
         </form>
+
     </nav>
 
 
     <!-- header ends here -->
     <div class="container mx-auto  w-50 h-100">
-       
+
         <div class="row">
             <div class="col-sm">
                 <i class="bi bi-lightbulb"></i>
@@ -49,7 +53,8 @@
             </div>
         </div>
         <div class="col-xd text-center">
-            <i class="bi bi-cpu"></i>
+            <i class="bi bi-cpu" id="chip"></i>
+            <div class="col shadow py-2 mb-1" id="state"></div>
         </div>
     </div>
 
